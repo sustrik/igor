@@ -1,0 +1,23 @@
+package main
+
+import __context "context"
+import __igor "github.com/sustrik/igor/lib/igor"
+
+func __main(__ctx __context.Context) {
+	var i, j int
+	var n __igor.Nursery
+	{
+		__nursery := n
+		__nursery.Start__()
+		go func() {
+			__err := foo(__nursery.Context__(), i, j)
+			__nursery.Stop__(__err)
+		}()
+	}
+	n.Close(__ctx)
+}
+
+func foo(__ctx __context.Context, i, j int) error { return nil }
+func main() {
+	__main(__context.Background())
+}

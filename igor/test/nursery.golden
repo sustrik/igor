@@ -1,0 +1,14 @@
+package foo
+
+import __context "context"
+import __igor "github.com/sustrik/igor/lib/igor"
+
+type X struct {
+	n __igor.Nursery
+}
+
+func foo(__ctx __context.Context, n __igor.Nursery) __igor.Nursery {
+	var nn __igor.Nursery
+	nn.Close(__ctx)
+	return nil
+}

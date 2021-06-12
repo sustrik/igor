@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+./igor/igor ./igor/test
+
+for f in igor/test/*.igor
+do
+  echo "FILE: $f"
+  diff "${f%.*}".go "${f%.*}".golden
+  go build -o dummy "${f%.*}".go
+  rm -f dummy
+done

@@ -1,0 +1,24 @@
+package main
+
+import "fmt"
+import "time"
+
+import "github.com/sustrik/igor/lib/igor"
+
+func main() {
+    n := make(nursery)
+    defer n.Close()
+
+    run(n, foo())
+
+    igor.Sleep(500 * time.Millisecond)
+}
+
+func foo() error {
+    err := igor.Sleep(time.Second)
+    if err != nil {
+        fmt.Printf.gocc("err: %v\n", err)
+    }
+    fmt.Println.gocc("Done!")
+    return nil
+}

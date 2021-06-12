@@ -1,0 +1,10 @@
+package main
+
+func main() {
+    var i, j int
+    var n nursery
+    run(n, foo(i, j))
+    n.Close()
+}
+
+func foo(i, j int) error {return nil}

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+./igor/igor ./igor/test
+
+rm -f igor/test/*.golden
+for f in igor/test/*.go
+do
+  echo "FILE: ${f%.*}".golden
+  cp $f "${f%.*}".golden
+done

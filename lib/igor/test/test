@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -ex
+
+./igor/igor ./lib/igor/test/cancel.igor
+go build -o ./lib/igor/test/cancel ./lib/igor/test/cancel.go
+./lib/igor/test/cancel

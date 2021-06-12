@@ -1,0 +1,11 @@
+package foo
+
+type X struct {
+    n nursery
+}
+
+func foo(n nursery) nursery {
+    var nn nursery
+    nn.Close()
+    return nil
+}
