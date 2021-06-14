@@ -3,7 +3,9 @@
 Igor is a dialect of Go language with the support for
 [structured concurrency](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/).
 
-*WARNING: The project is under development.*
+*WARNING: This project is meant as a playground for experimenting with what a language with native
+support fot structured concurrency would look like. If you want to do serious work, please use
+`golang.org/x/sync/errgroup` instead.*
 
 ## How does it differ from the standard go?
 
@@ -13,12 +15,13 @@ Instead, launch the goroutines in nurseries using `run` function:
 
 ```go
 n := make(nursery)
-run(n, foo())
+run(n, foo(a, b, c))
 err := n.Wait()
 ```
 
-Note that Igor uses a calling convention that differs from the standard Go. Call the functions
-from native packages with `gocc` specifier:
+Note that Igor uses a calling convention that differs from the standard Go. Namely, there's an
+implicit first `context.Context` argument passed to each function. Therefore, you have to call
+the functions from the native packages with `gocc` specifier:
 
 ```go
 fmt.Println.gocc("Hi there!")
